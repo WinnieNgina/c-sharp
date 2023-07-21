@@ -1,0 +1,15 @@
+/home/winnie/c-sharp/lesson_one/bin/Debug/net7.0/lesson_one
+/home/winnie/c-sharp/lesson_one/bin/Debug/net7.0/lesson_one.deps.json
+/home/winnie/c-sharp/lesson_one/bin/Debug/net7.0/lesson_one.runtimeconfig.json
+/home/winnie/c-sharp/lesson_one/bin/Debug/net7.0/lesson_one.dll
+/home/winnie/c-sharp/lesson_one/bin/Debug/net7.0/lesson_one.pdb
+/home/winnie/c-sharp/lesson_one/obj/Debug/net7.0/lesson_one.csproj.AssemblyReference.cache
+/home/winnie/c-sharp/lesson_one/obj/Debug/net7.0/lesson_one.GeneratedMSBuildEditorConfig.editorconfig
+/home/winnie/c-sharp/lesson_one/obj/Debug/net7.0/lesson_one.AssemblyInfoInputs.cache
+/home/winnie/c-sharp/lesson_one/obj/Debug/net7.0/lesson_one.AssemblyInfo.cs
+/home/winnie/c-sharp/lesson_one/obj/Debug/net7.0/lesson_one.csproj.CoreCompileInputs.cache
+/home/winnie/c-sharp/lesson_one/obj/Debug/net7.0/lesson_one.dll
+/home/winnie/c-sharp/lesson_one/obj/Debug/net7.0/refint/lesson_one.dll
+/home/winnie/c-sharp/lesson_one/obj/Debug/net7.0/lesson_one.pdb
+/home/winnie/c-sharp/lesson_one/obj/Debug/net7.0/lesson_one.genruntimeconfig.cache
+/home/winnie/c-sharp/lesson_one/obj/Debug/net7.0/ref/lesson_one.dll
