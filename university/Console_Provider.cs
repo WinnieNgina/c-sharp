@@ -138,9 +138,10 @@ public class Console_Provider
             Print_Schools(u.List_Schools);
         }
     }
-    public void print_information ()
+    public void PrintInformation()
     {
         Print_Universities(Egerton.GetUniversities());
 
     }
+    public int number_of_universtities() => Egerton.GetUniversities().Count;
 }

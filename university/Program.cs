@@ -3,4 +3,4 @@
 using Reggy;
 Console_Provider W = new Console_Provider();
 W.Data_Entry();
-W.print_information();
+W.PrintInformation();
