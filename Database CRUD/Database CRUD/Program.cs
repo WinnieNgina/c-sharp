@@ -3,5 +3,7 @@
 using Database_CRUD;
 
 ConsoleProvider W = new ConsoleProvider();
-W.NumberOfStudents();
-W.printData();
+
+W.NumTeachers();
+W.AddStudentWithTeacherId();
+W.PrintStudentData();
