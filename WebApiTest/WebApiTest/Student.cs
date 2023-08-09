@@ -2,7 +2,8 @@
 {
     public class Student
     {
-        public int Age { set; get; }
+        public int Id { set; get; }
         public string Name { set; get; }
+        public DateTime DOB { set; get; } 
     }
 }

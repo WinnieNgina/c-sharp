@@ -1,9 +1,11 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using WebApiTest;
 
 var builder = WebApplication.CreateBuilder(args);
 //Dependency injection. Injecting swaggerbuckle and specifying their life time
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDbContext<SchoolDBContext>(options => options.UseSqlServer(builder.Configuration["DbConnection"]));
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
@@ -29,10 +31,16 @@ builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
     builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
 }));
 var app = builder.Build();
-
-app.MapGet("/user/details", () =>  new Student {Age = 40, Name = "Winnie"}).WithTags("Winnie");
-app.MapGet("/user/{Age}", (int Age) => new Student { Age = Age, Name = "Winnie" }).WithTags("Winnie");
-app.MapPost("user/path", (Student Ven) => Ven).WithTags("Winnie");
+app.MapPost("student", (Student student, SchoolDBContext db )=>
+{
+    db.Add(student);
+    db.SaveChanges();
+    return student;
+}   );
+app.MapGet("student", (SchoolDBContext db) =>
+{
+    return db.Students.ToList();
+});
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCors("corsapp");
