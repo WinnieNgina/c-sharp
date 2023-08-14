@@ -41,6 +41,10 @@ app.MapGet("student", (SchoolDBContext db) =>
 {
     return db.Students.ToList();
 });
+app.MapGet("student/{id}", (int id, SchoolDBContext db) =>
+{
+    return db.Students.FirstOrDefault(s => s.Id == id);
+});
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCors("corsapp");
