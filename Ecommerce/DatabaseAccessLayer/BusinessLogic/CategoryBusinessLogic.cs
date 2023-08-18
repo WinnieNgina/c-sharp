@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace DatabaseAccessLayer.BusinessLogic
 {
-    public class CategoryBusinessLogic
+    public class CategoryBusinessLogic : ICategoryBusinessLogic
     {
-    private readonly EcommerceContext econtext; //can only be only be instanciated in the constructor
-    public CategoryBusinessLogic(EcommerceContext ecommerceContext)
+        private readonly EcommerceContext econtext; //can only be only be instanciated in the constructor
+        public CategoryBusinessLogic(EcommerceContext ecommerceContext)
         {
             econtext = ecommerceContext;
         }
-    public Guid AddCategory(Category category) 
+        public Guid AddCategory(Category category)
         {
             econtext.Categories.Add(category);
             econtext.SaveChanges();
             return category.Id;
         }
-    public List <Category> GetCategories()
+        public List<Category> GetCategories()
         {
             return econtext.Categories.ToList();
         }
