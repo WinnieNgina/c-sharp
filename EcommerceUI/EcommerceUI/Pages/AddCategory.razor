@@ -1,14 +1,19 @@
 ﻿@page "/addcategory"
+@inject HttpClient Http
 <h3>AddCategory</h3>
 <div>
     <label>Add Category</label>
     <input @bind ="CategoryForm.categoryName" placeholder="Enter category name"/>
     </div>
+    <div>
+        <button @onclick="@Save">Save Category</button>
+    </div>
 @code {
     private CategoryDTO CategoryForm = new CategoryDTO();
-    void Save()
+    async Task Save()
     {
-        Console.WriteLine(CategoryForm.categoryName);
+        var result = await Http.PostAsJsonAsync("https://localhost:7139/category", CategoryForm);
+        
     }
     public class CategoryDTO
     {
