@@ -1,11 +1,17 @@
 using DatabaseAccessLayer.BusinessLogic;
 using DatabaseAccessLayer.EcommerceDBContext;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
+using DatabaseAccessLayer.Models;
 using System.Data.Common;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 //Register services
 builder.Services.AddScoped<CategoryBusinessLogic>();
@@ -28,8 +34,13 @@ using (var scope = app.Services.CreateScope())
     }
 }
 #endregion
-app.MapGet("/", () => "Hello World!");
+app.MapGet("category/", (CategoryBusinessLogic CatBiz) => CatBiz.GetCategories());
+app.MapPost("category", (Category category, CategoryBusinessLogic CatBiz) =>
+{
+    return Results.Ok(CatBiz.AddCategory(category));
+});
 //Register swagger API middle wares
+app.UseCors("corsapp");
 app.UseSwagger();
 app.UseSwaggerUI();
 app.Run();

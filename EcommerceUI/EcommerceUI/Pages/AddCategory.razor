@@ -1,0 +1,18 @@
+﻿@page "/addcategory"
+<h3>AddCategory</h3>
+<div>
+    <label>Add Category</label>
+    <input @bind ="CategoryForm.categoryName" placeholder="Enter category name"/>
+    </div>
+@code {
+    private CategoryDTO CategoryForm = new CategoryDTO();
+    void Save()
+    {
+        Console.WriteLine(CategoryForm.categoryName);
+    }
+    public class CategoryDTO
+    {
+        public string categoryName{ get; set; }
+    }
+
+}
