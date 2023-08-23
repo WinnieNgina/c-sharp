@@ -1,5 +1,6 @@
 ﻿using DatabaseAccessLayer.EcommerceDBContext;
 using DatabaseAccessLayer.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,13 @@ namespace DatabaseAccessLayer.BusinessLogic
         }
         public List<Category> GetCategories()
         {
-            return econtext.Categories.ToList();
+            return econtext.Categories.Include(x=>x.Products).ToList();
+        }
+        public Category? GetCategoryById(Guid id) 
+        {
+            return econtext.Categories.
+                Include(x=> x.Products).
+                FirstOrDefault(x=>x.Id == id);
         }
     }
 }

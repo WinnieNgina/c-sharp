@@ -9,7 +9,7 @@
         public string productName { get; set; }
         public string imageUrl { get; set; }
         public string description { get; set; }
-        public int price { get; set; }
+        public decimal price { get; set; }
         public string categoryId { get; set; }
         public string productCategory { get; set; }
     }
