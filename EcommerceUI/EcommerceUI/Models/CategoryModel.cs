@@ -11,7 +11,7 @@
         public string description { get; set; }
         public decimal price { get; set; }
         public string categoryId { get; set; }
-        public string productCategory { get; set; }
+        public CategoryModel productCategory { get; set; }
     }
 
     public class CategoryModel

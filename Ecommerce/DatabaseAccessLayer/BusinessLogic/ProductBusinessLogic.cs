@@ -26,6 +26,10 @@ namespace DatabaseAccessLayer.BusinessLogic
         {
             return econtexts.Products.Include(x=> x.ProductCategory).ToList();
         }
+        public List<Product> SearchProduct (string searchvalue)
+        {
+            return econtexts.Products.Include(x => x.ProductCategory).Where(x => x.ProductName.Contains(searchvalue)).ToList();
+        }
 
     }
 }

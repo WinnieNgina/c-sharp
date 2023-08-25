@@ -46,7 +46,9 @@ app.MapPost("category", (Category category, CategoryBusinessLogic CatBiz) =>
     return Results.Ok(CatBiz.AddCategory(category));
 });
 app.MapGet("category/{id}", (Guid id, CategoryBusinessLogic CatBiz) => CatBiz.GetCategoryById(id));
+app.MapGet("category/search/{searchvalue}", (string searchvalue, CategoryBusinessLogic CatBiz) => CatBiz.SearchCategory(searchvalue));
 app.MapGet("product/", (ProductBusinessLogic ProductBiz) => ProductBiz.GetProducts());
+app.MapGet("product/search/{searchvalue}", (string searchvalue, ProductBusinessLogic ProductBiz) =>ProductBiz.SearchProduct(searchvalue));
 app.MapPost("product", (Product products, ProductBusinessLogic ProductBiz) =>
 {
     return Results.Ok(ProductBiz.AddProduct(products));

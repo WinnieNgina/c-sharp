@@ -1,0 +1,48 @@
+﻿@page "/searchproducts"
+@inject HttpClient Http
+@using EcommerceUI.Models
+
+
+<h1>Search product</h1>
+<div>
+    <label>Search product</label>
+    <input @bind="ProductForm.ProductName" placeholder="Enter product name" />
+</div>
+<div>
+    <button @onclick="@Search">Search Product</button>
+</div>
+
+
+@if (products == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+        
+            @foreach (var Item in products)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img src="@Item.imageUrl" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">@Item.productName</h5>
+                        <p class="card-text">@Item.description</p>
+                    </div>
+                </div>
+            }
+       
+}
+
+@code {
+    private List<Product>? products;
+    private ProductDTO ProductForm = new ProductDTO();
+
+    async Task Search()
+    {
+        products = await Http.GetFromJsonAsync<List<Product>>($"https://localhost:7139/product/search/{ProductForm.ProductName}");
+    }
+    public class ProductDTO
+    {
+        public string ProductName;
+    }
+}

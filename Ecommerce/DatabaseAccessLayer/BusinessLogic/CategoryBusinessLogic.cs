@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,15 @@ namespace DatabaseAccessLayer.BusinessLogic
             return econtext.Categories.
                 Include(x=> x.Products).
                 FirstOrDefault(x=>x.Id == id);
+        }
+        public List<Category> SearchCategory(string searchvalue)
+        {
+            return econtext.Categories.Include(x => x.Products).Where(x => x.CategoryName.Contains(searchvalue)).ToList();
+            //econtext.Categories - gives access to the database table
+            //Include(x => x.Products) - gives us access to child (Access to referenced keys)
+            //Where(x => x.CategoryName == searchvalue) - provides the link- filtration condition - gives access to all items
+            //.First = gives access to the first item that meet the condition
+
         }
     }
 }
