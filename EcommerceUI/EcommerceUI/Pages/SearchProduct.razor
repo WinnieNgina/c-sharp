@@ -39,7 +39,7 @@ else
 
     async Task Search()
     {
-        products = await Http.GetFromJsonAsync<List<Product>>($"https://localhost:7139/product/search/{ProductForm.ProductName}");
+        products = await Http.GetFromJsonAsync<List<Product>>($"http://localhost:5220/product/search/{ProductForm.ProductName}");
     }
     public class ProductDTO
     {

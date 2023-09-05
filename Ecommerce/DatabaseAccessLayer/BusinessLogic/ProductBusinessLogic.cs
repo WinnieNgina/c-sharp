@@ -30,6 +30,11 @@ namespace DatabaseAccessLayer.BusinessLogic
         {
             return econtexts.Products.Include(x => x.ProductCategory).Where(x => x.ProductName.Contains(searchvalue)).ToList();
         }
-
+        public bool UpdateProduct (Product product)
+        {
+            econtexts.Products.Update(product);
+            econtexts.SaveChanges();
+            return true;
+        } 
     }
 }
